@@ -482,7 +482,7 @@ for (const [slug, raw] of Object.entries(THEMES)) {
           geometry: { type: 'Point', coordinates: [x, y] } })) } },
       ...(t.hill ? { terrain: { type: 'raster-dem', encoding: 'terrarium', tileSize: 256, maxzoom: 14,
         tiles: ['https://s3.amazonaws.com/elevation-tiles-prod/terrarium/{z}/{x}/{y}.png'],
-        attribution: 'Terrain: Mapzen / AWS Terrain Tiles' } } : {}),
+        attribution: 'Terrain © Mapzen' } } : {}),
     },
     layers: layers(t),
   };
