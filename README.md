@@ -9,6 +9,15 @@ Four vector basemaps drawn from one tileset, in the Haust palette.
 | **Atlas** | The printed historical-atlas look: cream land, pale water, thin hydrography |
 | **Dark** | Dashboards and live desks |
 
+## Chicago in each style
+
+| | The city, zoom 12 | The Loop, zoom 14.6 |
+|---|---|---|
+| **Topographic** | ![Haust Topographic over the north and west sides of Chicago](docs/images/topographic-city.jpg) | ![Haust Topographic over the Loop](docs/images/topographic-downtown.jpg) |
+| **Canvas** | ![Haust Canvas over the north and west sides of Chicago](docs/images/canvas-city.jpg) | ![Haust Canvas over the Loop](docs/images/canvas-downtown.jpg) |
+| **Atlas** | ![Haust Atlas over the north and west sides of Chicago](docs/images/atlas-city.jpg) | ![Haust Atlas over the Loop](docs/images/atlas-downtown.jpg) |
+| **Dark** | ![Haust Dark over the north and west sides of Chicago](docs/images/dark-city.jpg) | ![Haust Dark over the Loop](docs/images/dark-downtown.jpg) |
+
 The styles are MapLibre GL style JSON over tiles in the OpenMapTiles schema, built from
 OpenStreetMap with Planetiler and stored as PMTiles.
 
