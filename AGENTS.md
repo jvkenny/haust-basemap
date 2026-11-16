@@ -47,4 +47,6 @@ Rules that keep maps built on these correct:
 - Check your change: `node web/serve.mjs 8660` then `node build/shots.mjs shots/check` renders
   ten views of every style. Look at the zooms between 11 and 14, where road hierarchy is fragile.
 - Tiles: `build/build_tiles.sh <area>` (small areas, macOS) or `build/remote/build_area.sh <area>`
-  (large areas, Linux build host; needs about 20 GB of heap for a continent).
+  (large areas, Linux build host; needs about 20 GB of heap for a continent). North America
+  took 1 h 42 min with a 24 GB heap and came to 21 GB. `SHOTS_SET=continent node build/shots.mjs`
+  renders twelve wide-area and mountain views to check a large tileset.

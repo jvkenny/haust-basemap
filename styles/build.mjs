@@ -435,6 +435,11 @@ function layers(t) {
       'text-variable-anchor': ['step', ['zoom'], ['literal', ['bottom-left', 'top-left', 'bottom-right', 'top-right']], 10, ['literal', ['center']]],
       'text-radial-offset': ['step', ['zoom'], 0.35, 10, 0], 'text-padding': 4 },
     paint: { 'text-color': t.label, ...halo } });
+  // States sit under cities in the stack, so a major city wins its spot before the state name does.
+  text('label-state', 'place', { minzoom: 3, maxzoom: 9, filter: ['==', get('class'), 'state'],
+    layout: { 'text-field': NAME, 'text-font': F.serif, 'text-transform': 'uppercase',
+      'text-letter-spacing': 0.3, 'text-size': zoomC([[3, 10], [8, 17]]), 'text-max-width': 6 },
+    paint: { 'text-color': t.labelMuted, 'text-opacity': 0.8, ...halo } });
   text('label-city', 'place', { minzoom: 3, maxzoom: 14, filter: ['==', get('class'), 'city'],
     layout: { 'text-field': NAME, 'text-font': F.sansB,
       'text-size': ['interpolate', ['linear'], ['zoom'], 3, ['step', get('rank'), 13, 4, 11], 8, ['step', get('rank'), 18, 4, 15, 8, 13], 13, ['step', get('rank'), 26, 4, 21, 8, 18]],
@@ -443,10 +448,6 @@ function layers(t) {
       'text-variable-anchor': ['step', ['zoom'], ['literal', ['bottom-left', 'top-left', 'bottom-right', 'top-right']], 9, ['literal', ['center']]],
       'text-radial-offset': ['step', ['zoom'], 0.4, 9, 0], 'text-padding': 4 },
     paint: { 'text-color': t.label, ...halo, 'text-halo-width': t.haloW + 0.3 } });
-  text('label-state', 'place', { minzoom: 3, maxzoom: 9, filter: ['==', get('class'), 'state'],
-    layout: { 'text-field': NAME, 'text-font': F.serif, 'text-transform': 'uppercase',
-      'text-letter-spacing': 0.3, 'text-size': zoomC([[3, 10], [8, 17]]), 'text-max-width': 6 },
-    paint: { 'text-color': t.labelMuted, 'text-opacity': 0.8, ...halo } });
   text('label-country', 'place', { maxzoom: 7, filter: ['==', get('class'), 'country'],
     layout: { 'text-field': NAME, 'text-font': F.serifSB, 'text-transform': 'uppercase',
       'text-letter-spacing': 0.25, 'text-size': zoomC([[1, 10], [6, 18]]), 'text-max-width': 6 },
