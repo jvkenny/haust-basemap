@@ -1,0 +1,399 @@
+{
+  "name": "Haust",
+  "slug": "haust",
+  "version": "1.0",
+  "meaning": "Haust is Icelandic for autumn. Three overcast autumn photos John took in Iceland: low cold sky, wet black basalt, and small loud accents of birch, rowan, heath, moss and glacial water.",
+  "sources": [
+    {
+      "file": "reference/thingvellir-fissure.jpg",
+      "place": "Þingvellir — Silfra/Flosagjá rift fissure, Öxarárfoss in the far left distance",
+      "gives": "the overcast sky, slate fissure water, birch gold, bilberry, lichen rock"
+    },
+    {
+      "file": "reference/thingvellir-rowan.jpg",
+      "place": "Þingvellir — moss-covered lava field below Ármannsfell",
+      "gives": "rowan orange, red heath, lava moss, the break of blue sky"
+    },
+    {
+      "file": "reference/bruarfoss.jpg",
+      "place": "Brúarfoss, Golden Circle",
+      "gives": "glacial turquoise, meltwater, wet basalt, whitewater"
+    }
+  ],
+  "method": "Lab k-means over each whole frame, then hue-band sampling of the small accent areas (top-chroma pixels inside each hue band). from: 'photo' = pixel median, unchanged; 'lifted' = the sampled hue with chroma/lightness adjusted for screen, print or colorblind separation (raw value in the note); 'derived' = built from a photo color for a role the photos have no pixel for (page backgrounds).",
+  "swatches": {
+    "fissure": {
+      "hex": "#1F1D18",
+      "name": "Fissure",
+      "from": "photo",
+      "note": "darkest 2% of the rift photo — wet basalt in shadow. Body text, linework."
+    },
+    "basalt": {
+      "hex": "#3E3B34",
+      "name": "Basalt",
+      "from": "photo",
+      "note": "dark lava rock (Brúarfoss wet rock is #32302C). Secondary text, roads, borders."
+    },
+    "lichen": {
+      "hex": "#6B6156",
+      "name": "Lichen",
+      "from": "photo",
+      "note": "grey-brown lichened rock. Muted text, 'other' / no-data."
+    },
+    "lichen_rose": {
+      "hex": "#9A7A6E",
+      "name": "Lichen Rose",
+      "from": "lifted",
+      "note": "the pinkish lichen plates at the fissure edge (#8A7166 raw)."
+    },
+    "umber": {
+      "hex": "#574427",
+      "name": "Umber",
+      "from": "photo",
+      "note": "shadowed dry grass."
+    },
+    "ochre": {
+      "hex": "#8E6F40",
+      "name": "Ochre",
+      "from": "photo",
+      "note": "the dominant dried-grass midtone."
+    },
+    "birch": {
+      "hex": "#CC9C2E",
+      "name": "Birch Gold",
+      "from": "photo",
+      "note": "sunlit birch and willow leaves."
+    },
+    "rowan": {
+      "hex": "#B95A1F",
+      "name": "Rowan",
+      "from": "lifted",
+      "note": "the rowan tree (#B15E24 raw), darkened a step so it never collides with Birch Gold under deuteranopia."
+    },
+    "heath": {
+      "hex": "#973D27",
+      "name": "Heath",
+      "from": "photo",
+      "note": "rowan berries and red heath in the lava field."
+    },
+    "bilberry": {
+      "hex": "#9C4D4F",
+      "name": "Bilberry",
+      "from": "photo",
+      "note": "bilberry leaves at the fissure — rosier than Heath. Alerts."
+    },
+    "lava_moss": {
+      "hex": "#8C8A4E",
+      "name": "Lava Moss",
+      "from": "photo",
+      "note": "the moss mounds over the lava field."
+    },
+    "moss": {
+      "hex": "#767D1F",
+      "name": "Moss",
+      "from": "photo",
+      "note": "bright moss on the fissure rim."
+    },
+    "deep_moss": {
+      "hex": "#3C4A1C",
+      "name": "Deep Moss",
+      "from": "lifted",
+      "note": "moss in shade (#4D4A2B raw), pushed greener and darker — the only green that stays distinct from Rowan and Birch for colorblind readers."
+    },
+    "silfra": {
+      "hex": "#405664",
+      "name": "Silfra",
+      "from": "photo",
+      "note": "the fissure water as the camera saw it — slate blue."
+    },
+    "silfra_teal": {
+      "hex": "#2F6B73",
+      "name": "Silfra Teal",
+      "from": "lifted",
+      "note": "the teal at the bottom of the clear fissure, chroma raised."
+    },
+    "bruarfoss": {
+      "hex": "#4DA3AC",
+      "name": "Brúarfoss",
+      "from": "lifted",
+      "note": "the glacial turquoise (#5EA1A7 raw, top 2% chroma). The second hero color."
+    },
+    "meltwater": {
+      "hex": "#89B8BD",
+      "name": "Meltwater",
+      "from": "photo",
+      "note": "the river where it whitens. Water fills."
+    },
+    "hengill": {
+      "hex": "#5F738D",
+      "name": "Hengill",
+      "from": "photo",
+      "note": "the distant mountains."
+    },
+    "storm": {
+      "hex": "#8DA3BC",
+      "name": "Storm",
+      "from": "lifted",
+      "note": "the low rain band (#98AABE raw), slightly deepened."
+    },
+    "sky_break": {
+      "hex": "#A3CAEA",
+      "name": "Sky Break",
+      "from": "photo",
+      "note": "the one patch of blue sky over the lava field."
+    },
+    "overcast": {
+      "hex": "#AEC0D1",
+      "name": "Overcast",
+      "from": "photo",
+      "note": "the sky mass — 60% of the rift photo."
+    },
+    "whitewater": {
+      "hex": "#CCDBE1",
+      "name": "Whitewater",
+      "from": "photo",
+      "note": "the falls."
+    },
+    "mist": {
+      "hex": "#E8EDF2",
+      "name": "Mist",
+      "from": "derived",
+      "note": "page / background. Overcast lightened to L94."
+    },
+    "frost": {
+      "hex": "#F6F8FA",
+      "name": "Frost",
+      "from": "derived",
+      "note": "cards, panels, label halos."
+    }
+  },
+  "dark_mode": {
+    "background": "#16191C",
+    "surface": "#1F2429",
+    "text": "#E8EDF2",
+    "muted": "#9AA5B1",
+    "categorical": [
+      "#5BB4BD",
+      "#C96A2E",
+      "#D6A836",
+      "#CBD48F",
+      "#C3DCF0",
+      "#2F7A84"
+    ],
+    "note": "Basalt at night. Same order as the light core. The green FLIPS to pale (#CBD48F) — on a dark ground the only colorblind-safe green is the lightest mark, the mirror of Deep Moss on a light one."
+  },
+  "roles": {
+    "text": "fissure",
+    "text_muted": "lichen",
+    "background": "mist",
+    "surface": "frost",
+    "rule": "overcast",
+    "accent": "rowan",
+    "accent_alt": "bruarfoss",
+    "highlight": "birch",
+    "alert": "bilberry",
+    "no_data": "lichen"
+  },
+  "categorical": {
+    "core": [
+      "bruarfoss",
+      "rowan",
+      "birch",
+      "deep_moss",
+      "sky_break",
+      "silfra_teal"
+    ],
+    "extended": [
+      "lichen_rose",
+      "basalt"
+    ],
+    "note": "Core 6 hold ΔE2000 ≥ 13 between every pair under normal, protan, deutan and tritan vision. Extended 2 bring the floor to ~10 — past 6, label directly or vary shape. Bilberry is the alert color, kept out of categorical sets so 'red' always means 'look here'. Never swap Deep Moss for Moss or Lava Moss in a categorical set: mid-tone greens collapse into Rowan for deuteranopes (ΔE 2.6)."
+  },
+  "sequential": {
+    "fissure": {
+      "stops": [
+        "#EEF2F6",
+        "#C3D1DE",
+        "#8DA3BC",
+        "#5F738D",
+        "#405664",
+        "#24323D"
+      ],
+      "use": "the default: density, counts, depth"
+    },
+    "glacial": {
+      "stops": [
+        "#EEF6F7",
+        "#BCDDE0",
+        "#7BBAC0",
+        "#4196A0",
+        "#2F6B73",
+        "#1C3F44"
+      ],
+      "use": "water, precipitation, anything wet"
+    },
+    "birch": {
+      "stops": [
+        "#F6EDD3",
+        "#E9CB80",
+        "#CC9C2E",
+        "#9C7128",
+        "#6A4B1F",
+        "#3A2914"
+      ],
+      "use": "intensity, 'more is louder'"
+    },
+    "rowan": {
+      "stops": [
+        "#FAEBDD",
+        "#EEBE94",
+        "#D98A4E",
+        "#B95A1F",
+        "#7E3A16",
+        "#45200D"
+      ],
+      "use": "heat, risk, severity"
+    },
+    "moss": {
+      "stops": [
+        "#EFEFD6",
+        "#CDD08A",
+        "#9EA43C",
+        "#767D1F",
+        "#4D5A1F",
+        "#2B3414"
+      ],
+      "use": "vegetation, canopy, NDVI"
+    }
+  },
+  "diverging": {
+    "rift": {
+      "stops": [
+        "#24323D",
+        "#405664",
+        "#8DA3BC",
+        "#E6E8E6",
+        "#E9CB80",
+        "#CC9C2E",
+        "#6A4B1F"
+      ],
+      "use": "the default diverging. Named for the plate boundary at Þingvellir: North American plate (cold) / Eurasian plate (warm)."
+    },
+    "fire_ice": {
+      "stops": [
+        "#1C3F44",
+        "#2F6B73",
+        "#7BBAC0",
+        "#E8EAE8",
+        "#EEBE94",
+        "#B95A1F",
+        "#6B2F10"
+      ],
+      "use": "louder version: glacial ↔ rowan. Change maps, gain/loss."
+    }
+  },
+  "hypsometric": {
+    "stops": [
+      {
+        "t": 0.0,
+        "hex": "#5E6A3A",
+        "name": "valley moss"
+      },
+      {
+        "t": 0.2,
+        "hex": "#8C8A4E",
+        "name": "lava moss"
+      },
+      {
+        "t": 0.4,
+        "hex": "#B09659",
+        "name": "dry grass"
+      },
+      {
+        "t": 0.6,
+        "hex": "#C2A397",
+        "name": "lichen rose"
+      },
+      {
+        "t": 0.8,
+        "hex": "#C9CACB",
+        "name": "scree"
+      },
+      {
+        "t": 1.0,
+        "hex": "#F6F8FA",
+        "name": "cloud"
+      }
+    ],
+    "water": "#9CC3C7",
+    "water_line": "#2F6B73",
+    "use": "terrain under a hillshade (multiply, 40–60% opacity). Lightens with elevation: lava moss → grass → lichen → bare rock → cloud."
+  },
+  "basemap": {
+    "land": "#EFEDE6",
+    "water": "#B6D1D5",
+    "water_line": "#4196A0",
+    "park": "#D9DCB8",
+    "woodland": "#C9CD95",
+    "building": "#DAD3C8",
+    "road_major": "#FFFFFF",
+    "road_casing": "#BDB6AA",
+    "boundary": "#9A7A6E",
+    "label": "#1F1D18",
+    "label_water": "#2A5D64",
+    "halo": "#F6F8FA"
+  },
+  "atlas": {
+    "paper": "#F6F8FA",
+    "neatline": "#405664",
+    "neatline_hairline": "#B95A1F",
+    "land": "#F1ECDA",
+    "water": "#C6DCDF",
+    "water_line": "#4196A0",
+    "graticule": "#4196A0",
+    "graticule_label": "#2F6B73",
+    "wash": "#8DA3BC",
+    "wash_alt": "#CDD08A",
+    "border": "#6B6156",
+    "border_intl": "#3E3B34",
+    "label": "#1F1D18",
+    "label_region": "#3E3B34",
+    "label_water": "#2A5D64",
+    "routes": [
+      "#B95A1F",
+      "#2F6B73",
+      "#3C4A1C",
+      "#9A7A6E"
+    ],
+    "route_dashes": [
+      "solid",
+      "dash",
+      "dot"
+    ],
+    "symbol_fort": "#405664",
+    "symbol_village": "#574427",
+    "symbol_mission": "#3E3B34",
+    "isotype": "#B95A1F",
+    "textbox": "#FBFBF8",
+    "textbox_rule": "#1F1D18",
+    "flow": "#B95A1F",
+    "flow_alt": "#973D27",
+    "circle": "#5F738D",
+    "branches": [
+      "#4DA3AC",
+      "#CC9C2E",
+      "#3C4A1C",
+      "#A3CAEA",
+      "#2F6B73",
+      "#9A7A6E"
+    ],
+    "tag": "#E9CB80",
+    "badge": "#FBFBF8",
+    "event": "#1F1D18",
+    "boundary": "#973D27",
+    "hatch": "#3E3B34",
+    "chart_panel": "#EEF1F3",
+    "chart_grid": "#C9D4DE",
+    "note": "The historical-atlas plate (gis-cartography/reference/atlas-standard.md). Warm cream land, pale cool water, dense thin hydrography, feathered washes for areas, dark pictographs, colored routes on top. Routes are DARKER than the categorical core because they sit on cream, not mist: 4 hues hold ΔE2000 >= 13 under all vision types and >= 3:1 on land; past 4 routes, vary the dash (solid, dash, dot) inside one hue per explorer/actor. Washes are fills at 35-50% opacity with feathered edges, never outlined. Flows: rowan (colonial) / heath (later era), width ∝ count. Branch colors = categorical core minus rowan (rowan is the flow), plus lichen rose: used for dots and pie slices, always with a dark hairline edge because pale ones (sky break) are under 3:1 on cream. Tags (date) are birch-light with fissure text; badges (counts) white; event markers fissure with white numerals."
+  }
+}

@@ -1,0 +1,91 @@
+{
+ "name": "Haust Basemaps",
+ "schema": "OpenMapTiles",
+ "tiles": "pmtiles://{base}/tiles/{area}.pmtiles",
+ "area": "{area}",
+ "requires": "MapLibre GL JS with the PMTiles protocol registered (pmtiles >= 3)",
+ "attribution": "© OpenStreetMap contributors · © OpenMapTiles",
+ "styles": {
+  "topographic": {
+   "name": "Haust Topographic",
+   "url": "{base}/styles/haust-topographic.json",
+   "use": "General reference map. Use when the basemap itself is the content or no other choice is stated.",
+   "scheme": "light",
+   "hillshade": true,
+   "colors": {
+    "land": "#EFEDE6",
+    "water": "#B6D1D5",
+    "label": "#1F1D18",
+    "halo": "#F6F8FA"
+   }
+  },
+  "canvas": {
+   "name": "Haust Canvas",
+   "url": "{base}/styles/haust-canvas.json",
+   "use": "Quiet neutral ground. Use under thematic overlays: choropleths, dot maps, heat maps, routes.",
+   "scheme": "light",
+   "hillshade": false,
+   "colors": {
+    "land": "#F6F8FA",
+    "water": "#C0D0DB",
+    "label": "#405664",
+    "halo": "#F6F8FA"
+   }
+  },
+  "atlas": {
+   "name": "Haust Atlas",
+   "url": "{base}/styles/haust-atlas.json",
+   "use": "Printed historical-atlas look. Use for narrative and historical maps with a few routes or points on top.",
+   "scheme": "light",
+   "hillshade": false,
+   "colors": {
+    "land": "#F1ECDA",
+    "water": "#C6DCDF",
+    "label": "#1F1D18",
+    "halo": "#F1ECDA"
+   }
+  },
+  "dark": {
+   "name": "Haust Dark",
+   "url": "{base}/styles/haust-dark.json",
+   "use": "Dark ground. Use for dashboards, live desks and anything shown on a dark page.",
+   "scheme": "dark",
+   "hillshade": true,
+   "colors": {
+    "land": "#16191C",
+    "water": "#1E3236",
+    "label": "#E8EDF2",
+    "halo": "#16191C"
+   }
+  }
+ },
+ "anchors": {
+  "haust-below-roads": "Insert area overlays (choropleths, washes, rasters) here: above land, water and buildings, below roads and labels.",
+  "haust-below-labels": "Insert line and point overlays here: above roads, below every label."
+ },
+ "sprites": [
+  "shield",
+  "shield-i",
+  "shield-s",
+  "dot",
+  "rail",
+  "metro",
+  "ferry",
+  "airport",
+  "stadium",
+  "hospital",
+  "school",
+  "museum"
+ ],
+ "fonts": [
+  "EB Garamond Regular",
+  "EB Garamond Italic",
+  "EB Garamond Medium",
+  "EB Garamond Medium Italic",
+  "EB Garamond SemiBold",
+  "Roboto Condensed Regular",
+  "Roboto Condensed Bold",
+  "Roboto Condensed Italic",
+  "Roboto Condensed Light"
+ ]
+}

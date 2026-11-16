@@ -1,0 +1,43 @@
+<!doctype html>
+<!-- Minimal use of a Haust basemap with an overlay under the labels.
+     Open it from the basemap server: http://<host>:<port>/examples/overlay.html?style=canvas -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Haust basemap with an overlay</title>
+<link rel="stylesheet" href="https://unpkg.com/maplibre-gl@5.6.0/dist/maplibre-gl.css">
+<style>html, body { height: 100%; margin: 0; } #map { position: absolute; inset: 0; }</style>
+</head>
+<body>
+<div id="map"></div>
+<script src="https://unpkg.com/maplibre-gl@5.6.0/dist/maplibre-gl.js"></script>
+<script src="https://unpkg.com/pmtiles@4.3.0/dist/pmtiles.js"></script>
+<script>
+// 1. Register the PMTiles protocol once per page.
+maplibregl.addProtocol('pmtiles', new pmtiles.Protocol().tile);
+
+// 2. Point the map at a style. HOST is wherever web/serve.mjs is running.
+const HOST = location.origin;
+const style = new URLSearchParams(location.search).get('style') || 'canvas';
+const map = new maplibregl.Map({
+  container: 'map', style: `${HOST}/styles/haust-${style}.json`, center: [-87.65, 41.9], zoom: 11,
+});
+map.addControl(new maplibregl.NavigationControl({ visualizePitch: true }));
+
+// 3. Add your data at an anchor so the basemap's roads and labels stay on top.
+map.on('load', () => {
+  map.addSource('demo', { type: 'geojson', data: { type: 'FeatureCollection', features: [
+    { type: 'Feature', properties: {}, geometry: { type: 'Polygon', coordinates: [[
+      [-87.71, 41.89], [-87.66, 41.89], [-87.66, 41.925], [-87.71, 41.925], [-87.71, 41.89]]] } },
+    { type: 'Feature', properties: {}, geometry: { type: 'LineString', coordinates: [
+      [-87.74, 41.87], [-87.68, 41.90], [-87.63, 41.885]] } },
+  ] } });
+  map.addLayer({ id: 'demo-area', type: 'fill', source: 'demo', filter: ['==', ['geometry-type'], 'Polygon'],
+    paint: { 'fill-color': '#4DA3AC', 'fill-opacity': 0.35 } }, 'haust-below-roads');
+  map.addLayer({ id: 'demo-route', type: 'line', source: 'demo', filter: ['==', ['geometry-type'], 'LineString'],
+    paint: { 'line-color': '#B95A1F', 'line-width': 3 } }, 'haust-below-labels');
+});
+</script>
+</body>
+</html>

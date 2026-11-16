@@ -1,0 +1,8 @@
+data/
+build/node_modules/
+build/planetiler.jar
+build/*.log
+build/fontsrc/
+tiles/*.pmtiles
+shots/
+.deploy.env
